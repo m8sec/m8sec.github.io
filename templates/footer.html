@@ -1,0 +1,80 @@
+<div id="Footer">
+    <ul class="center socials">
+    </ul>
+    <span class="credits">
+        Design by | <a href="https://github.com/sponsors/m8r0wn">m8r0wn</a>
+    </span>
+</div>
+
+<script>
+    //***********************
+    // Populate Footer content
+    //***********************
+    const Icons = {
+      facebook      : 'fab fa-facebook-square',
+      linkedin      : 'fab fa-linkedin',
+      twitter       : 'fab fa-twitter-square',
+      pinterest     : 'fab fa-pinterest',
+      medium        : 'fab fa-medium',
+      youtube       : 'fab fa-youtube-square',
+      github        : 'fab fa-github-square',
+      instagram     : 'fab fa-instagram-square',
+      snapchat      : 'fab fa-snapchat-square',
+      reddit        : 'fab fa-reddit-square',
+      rss           : 'fas fa-rss-square',
+    };
+
+    for (var key in Socials){
+        if (Socials[key] !== '') {
+            var html = [
+                '<li style="padding-right:0.5%;">',
+                '<a href="' + Socials[key] + '" target="_blank">',
+                '<i class="' + Icons[key] + ' fa-3x" style="color:' + Config.icon_color + '"></i>',
+                '</a>',
+                '</li>',
+            ].join('');
+            $('.socials').append(html);
+        }
+    }
+
+    //***********************
+    // Apply configs to page - last item to load
+    //***********************
+
+    // Font & Sizing
+    $('body').css('font-family', Config.font);
+    $('#wrapper').css('color', Config.font_color);
+    $('#wrapper').css('font-size', Config.font_size);
+
+    // Background Colors
+    $('#top_bar').css('background-color', Config.nav_color);
+    $('body').css('background-color', Config.bg_color);
+    $('#Footer').css('background-color', Config.footer_color);
+    $('#wrapper').css('background-color', Config.fg_color);
+    $('#wrapper h1').css('color', Config.title_color);
+    $('#wrapper h3').css('color', Config.heading_color);
+    $('#wrapper h4').css('color', Config.subhead_color);
+    $('#wrapper hr, .content hr').css('background-color', Config.accent_color);
+
+    // Used on blog index page only
+    $('.post_date').css('color', Config.date_color);
+    $('#BlogPosts td').css('border-color', Config.accent_color);
+
+    // Link
+    $('#wrapper a, #Footer a').css('color', Config.link);
+
+    // Link:hover
+    $('#wrapper a, #Footer a').hover(
+        function() {
+            $(this).css('color', Config.hover);
+        },
+        function() {
+            $(this).css('color', Config.link);
+        }
+    );
+
+    // Link:active
+    $('#wrapper a, #Footer a').click(function() {
+        $(this).css('color', Config.active);
+    });
+</script>

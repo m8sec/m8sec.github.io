@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- PAGE SEO -->
+        <title>Home</title>
+        <meta name="author" content="m8r0wn">
+        <meta name="description" content="Cyber security blog used to share the latest tools, techniques, and research.">
+        <meta name="keywords" content="oscp,exploit,bugbounty,infosec,cybersecurity,redteam,pentest">
+
+        <!-- Meta tags & Resources -->
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="/css/core.css">
+        <link rel="stylesheet" href="/css/index.css">
+        <script type="text/javascript" src="/config.js"></script>
+
+        <!-- External JS Resources -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+        <!--Google Analytics-->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', Config.gtag, 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <!--                            -->
+        <!--    Template Placeholders   -->
+        <!--                            -->
+        <navbar></navbar>
+        <banner id="banner"></banner>
+        <div class="center BtnDiv">
+            <!--                     -->
+            <!--    Zone 1 Content   -->
+            <!--                     -->
+            <div class="indexCenter">
+                <a href="https://twitter.com/m8r0wn" target="_blank" class="waves-effect waves-light btn-large indexBtn light-blue darken-4">
+                    <i class="fab fa-twitter"></i>
+                    Updates
+                </a>
+
+                <a href="https://github.com/m8r0wn" target="_blank" class="waves-effect waves-light btn-large indexBtn light-blue darken-4">
+                    <i class="fab fa-github"></i>
+                    Projects
+                </a>
+
+                <a href="/medium/" class="waves-effect waves-light btn-large indexBtn light-blue darken-4">
+                    <i class="fab fa-medium-m"></i>
+                    Stories
+                </a>
+
+                <a href="/blog/" class="waves-effect waves-light btn-large indexBtn light-blue darken-4">
+                    <i class="fas fa-fire"></i>
+                    Blog
+                </a>
+
+                <div class="center" id="email_signup">
+                    <p class="email_text">
+                        Get updates on new tools and other content releases<br>
+                    </p>
+                    <form action="https://m8r0wn.us7.list-manage.com/subscribe/post?u=9cafaaa62b8ce44a90852b694&amp;id=b4dc966dd8" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <input type="email" value="" name="EMAIL" class="email" placeholder="email address" required>
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_9cafaaa62b8ce44a90852b694_b4dc966dd8" tabindex="-1" value="">
+                        </div>
+
+                        <div class="clear">
+                            <input type="submit" value="Subscribe" name="subscribe" class="button">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="intro">
+            <!--                     -->
+            <!--    Zone 2 Content   -->
+            <!--                     -->
+            <i class="fas fa-code" style="font-size:35px;"></i>
+        </div>
+
+        <ul id="ListSocials" class="center socials"></ul>
+        <script>
+            const Icons = {
+              facebook      : 'fab fa-facebook',
+              linkedin      : 'fab fa-linkedin',
+              twitter       : 'fab fa-twitter',
+              pinterest     : 'fab fa-pinterest-p',
+              medium        : 'fab fa-medium-m',
+              youtube       : 'fab fa-youtube',
+              github        : 'fab fa-github-alt',
+              instagram     : 'fab fa-instagram',
+              snapchat      : 'fab fa-snapchat-ghost',
+              reddit        : 'fab fa-reddit-alien',
+              rss           : 'fas fa-rss',
+            }
+
+            for (var key in Socials){
+                if (Socials[key] !== '') {
+                    var html = [
+                        '<li style="padding-right:0.5%;">',
+                        '<a href="' + Socials[key] + '" target="_blank">',
+                        '<i class="' + Icons[key] + ' fa-2x" style="color:#d9d9d9;"></i>',
+                        '</a>',
+                        '</li>',
+                    ].join('');
+                    $('#ListSocials').append(html);
+                }
+            }
+        </script>
+        <script type="text/javascript" src="/js/core.js"></script>
+    </body>
+</html>

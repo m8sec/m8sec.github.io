@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- PAGE SEO -->
+        <title>Uncovering Multiple XSS Conditions in Cacti <=1.1.38</title>
+        <meta name="author" content="m8r0wn">
+        <meta name="description" content="Responsible disclosure of two XSS vulnerabilities in the Cacti Network Graphing Solution.">
+        <meta name="keywords" content="webapp,cacti,xss,exploit,bugbounty,infosec,cybersecurity,pentest">
+
+        <!-- Meta tags & Resources -->
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/core.css">
+        <script type="text/javascript" src="/config.js"></script>
+
+        <!-- External JS Resources -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+        <!--Google Analytics-->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', Config.gtag, 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+        </script>
+
+        <!-- Code highlighter -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/styles/default.min.css" disabled="">
+        <link class="codestyle" rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/styles/railscasts.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body>
+        <navbar></navbar>
+        <banner id="banner"></banner>
+        <div id="wrapper" class="center">
+            <div class="content">
+                <h1>Uncovering Multiple XSS Conditions in Cacti<=1.1.38</h1>
+                <span class="post_date">September 02, 2018</span>
+                <hr>
+
+                A few weeks ago I ran into an older version of the Cacti network graphing solution, which led me down the path of researching the application. This revealed some interesting vulnerabilities that I disclosed through the project's <a href="https://github.com/Cacti/cacti">GitHub</a>:
+
+            <h3>Authenticated Stored XSS in user_admin.php (v1.1.38)</h3>
+            When creating a new user on /cacti/user_admin.php, using the “copy” method, it is possible to bypass user input validation. The application allows for the creation of a user called "<span style="font-weight:bold">&lt;script&gt;alert(1)&lt;/script&gt;</span>". This username just meets the max characters allowed. However, this restriction can be circumvented to allow for longer usernames/XSS payloads by using a web application proxy and editing the request before it is sent to the server.
+            <img src="./cacti_1.png" class="post_pic" style="max-width:300px;">
+            The stored XSS payload can then be executed by clicking in the user’s profile and visiting the “General”, “Permissions”, or “User Settings” tabs:
+            <pre><code class="html">http://127.0.0.1/cacti/user_admin.php?action=user_edit&id=[#}&tab=general
+http://127.0.0.1/cacti/user_admin.php?action=user_edit&id=[#]&tab=realms
+http://127.0.0.1/cacti/user_admin.php?action=user_edit&id=[#]&tab=settings</code></pre>
+            <img src="./cacti_2.png" class="post_pic">
+
+            <h3>Authenticated HTML Injection in user_group_admin.php (v1.1.38)</h3>
+            The same vulnerability, of using the “copy” approach to bypass input validation, exists on the user_group_admin.php page. However, I was unable to use the web application proxy trick to extend the field name.
+            <img src="./cacti_3.png" class="post_pic" style="max-width:400px;">
+            When trying to go back and delete this, I ran into some issues that required me to manually go into the database and remove the group from the “user_auth_group” table.
+            <img src="./cacti_4.png"  class="post_pic">
+            As a PoC, I was able to use this for a short HTML injection by creating the group "<span style="font-weight:bold">&lt;h1&gt;test&lt;/h1&gt;</span>". However, the code only rendered when going back to delete the account:
+            <img src="./cacti_5.png" class="post_pic">
+
+            <h3>Pre-Auth Reflected XSS in auth_changepassword.php (v0.8.7g)</h3>
+            I started looking into Cacti after I ran into version 0.8.7g for a client. There were several reflected XSS vulnerabilities, but I came across this one in auth_changepassword.php that I did not see documented anywhere:
+            <pre><code class="html">http://127.0.0.1/cacti/auth_changepassword.php?ref=%22%3E%3Cscript%3Ealert(document.domain)%3C/script%3E</code></pre>
+            <br>
+            Looking at the code itself, I saw a hidden parameter that does not validate user input allowing the XSS condition. This code was modified in the later version 0.8.7.h+.
+            <img src="./cacti_6.png" class="post_pic">
+
+            <div class="center" style="padding:1.5% 0 1.5% 0;">
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+            </div>
+
+            Each of the issues identified have been addressed in the later versions of Cacti. However, the full disclosure of these vulnerabilities, and author's response, can be found under <a href="https://github.com/Cacti/cacti/issues/1882">issue #1882</a>.
+
+            </div>
+        </div>
+        <footer></footer>
+       <script type="text/javascript" src="/js/core.js"></script>
+    </body>
+</html>

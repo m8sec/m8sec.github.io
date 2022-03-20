@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- PAGE SEO -->
+        <title>Guide to Bypassing MFA in 2020</title>
+        <meta name="author" content="m8r0wn">
+        <meta name="description" content="The latest techniques for bypassing multi-factor authentication in Microsoft 365
+        and Azure AD environments.">
+        <meta name="keywords" content="cloud,microsoft,azure,bypass,exploit,infosec,cybersecurity,redteam,pentest">
+
+        <!-- Meta tags & Resources -->
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/core.css">
+        <script type="text/javascript" src="/config.js"></script>
+
+        <!-- External JS Resources -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+        <!--Google Analytics-->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', Config.gtag, 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+        </script>
+
+        <!-- Code highlighter -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/styles/default.min.css" disabled="">
+        <link class="codestyle" rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/styles/railscasts.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body>
+        <navbar></navbar>
+        <banner id="banner"></banner>
+        <div id="wrapper" class="center">
+            <div class="content">
+                <h1>Guide to Bypassing MFA in 2020</h1>
+                <span class="post_date">December 16, 2020</span>
+                <hr>
+
+                <p>
+                As more applications and resources move to the cloud, organization’s are requiring multi-factor authentication (MFA) to better safeguard user accounts. This post outlines various methods used to bypass MFA in Microsoft 365 and Azure AD during offensive security engagements.
+               </p>
+               <h3>1. Conditional Access Policies</h3>
+                <p>
+                    The first method used to bypass MFA is through <a href="https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview">conditional access</a> policies. Simply put, these are if-then statements that allow an organization control over user access requirements. This can be used to enhance security by implementing policies such as:
+                    <ul style="padding-left:3%;">
+                       <li> - Requiring MFA on all users with administrative roles.</li>
+                       <li> - Creating trusted zones for MFA self-enrollment.</li>
+                       <li> - Blocking potentially risky sign-in behaviors.</li>
+                    </ul>
+                    <br>
+                    Another common use-case, to increase efficiency and productivity, is disabling MFA based location or device requirements. These policies can be exploited during an assessment by using previously compromised resources to gain further access into the cloud environment.
+                </p>
+
+               <h3>2. Legacy Protocols</h3>
+                <p>
+                    The second method in bypassing MFA is through legacy protocols. For a long time the tool <a href="https://github.com/dafthack/MailSniper">MailSniper</a> was a go to for bypassing MFA. The tool’s "Invoke-SelfSearch” functionality used Exchange Web Services (EWS) to programmatically login to a compromised account and extract information from an employee's inbox. EWS is an example of a now legacy protocol that was initially designed for client applications, in which MFA is not supported. If any of these protocols have been enabled by administrators, it may still be possible to extract information using compromised credentials and bypass MFA requirements.
+                    <a href="https://www.blackhillsinfosec.com/bypassing-two-factor-authentication-on-owa-portals/" target=”_blank”>
+                        <img src="./mailsniper.png" class="post_pic center">
+                    </a>
+                    <a href="https://twitter.com/dafthack">Dafthack</a> and the <a href="https://www.blackhillsinfosec.com/">BHIS</a> team came out with a great post about <a href="https://www.blackhillsinfosec.com/exploiting-mfa-inconsistencies-on-microsoft-services/" target=”_blank”>exploiting MFA inconsistencies</a>, which goes in depth on legacy protocols and abusing Microsoft services. A new tool was also released called <a href="https://github.com/dafthack/MFASweep">MFASweep</a> that tests various authentication methods potentially bypassing MFA.
+                </p>
+
+               <h3>3. Open MFA Registration</h3>
+                <p>
+                    Depending on the level of access attained, it may be possible to use tools such as <a href="https://github.com/dirkjanm/ROADtools">Dirkjanm's ROADtools</a> to identify MFA devices or the enrollment status of Azure AD users. This data can be analyzed to discover compromised accounts for takeover opportunities. The account can then be used for persistent access to resources, social engineering, etc.
+                </p>
+
+               <h3>4. Social Engineering</h3>
+               <p>
+                   There are various social engineering techniques one can use to bypass MFA requirements. A common implementation however, is the use of a reverse proxy such as <a href="https://github.com/kgretzky/evilginx2">evilginx2</a> or <a href="https://github.com/drk1wi/Modlishka">Modlishka</a>. These man-in-the middle frameworks sit between the client and server to intercept credentials while making the authentication process appear seamless to the client. Once authenticated, user credentials and session tokens are collected for session hijacking and further access.
+                   <img src="./evilginx2_diagram.png" class="post_pic center">
+               </p>
+               <h3>Defensive Measures</h3>
+               <p>
+                   Now that we've talked about some of the bypass techniques, what can we do about it?
+                   <ul style="padding-left:3%;text-indent: -10px;">
+                    <li style="margin:.5% 0 .5% 0;">- Implement <a href="https://www.microsoft.com/security/blog/2020/04/23/protecting-organization-password-spray-attacks/"  target=”_blank”>Azure AD Password Protection</a> to help defend against password spraying attacks.</li>
+                    <li style="margin:.5% 0 .5% 0;">- Review and modify overly permissive conditional access policies.</li>
+                    <li style="margin:.5% 0 .5% 0;">- Block all legacy protocols.</li>
+                    <li style="margin:.5% 0 .5% 0;">- Require trusted locations for MFA registration or self-service password resets.</li>
+                    <li style="margin:.5% 0 .5% 0;">- Where possible, use hardware security keys for MFA (such as Yubico). These are not compatible with reverse proxies and will block the attack due to the <a href="https://www.thecloudtechnologist.com/defending-against-evilginx2-in-office-365/" target=”_blank”>U2F origin binding implementation</a>.</li>
+                   </ul>
+                    <br>
+                   Microsoft enables many of these controls by default through "<a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults" target=”_blank”>Security Defaults</a>". However, overtime they may have been changed without knowing the associated risk.
+               </p>
+                <div class="center" style="padding:1.5% 0 1.5% 0;">
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+                    <i class="tiny material-icons center">gps_not_fixed</i>
+                </div>
+               Have more techniques not listed? Would love to hear about them! Feel free to reach out on Twitter <a href="https://twitter.com/m8r0wn">@m8r0wn</a>.
+            </div>
+        </div>
+        <footer></footer>
+       <script type="text/javascript" src="/js/core.js"></script>
+    </body>
+</html>

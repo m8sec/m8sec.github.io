@@ -1,0 +1,5 @@
+drafts/*
+projects/*
+docs/*
+.DS_Store
+.idea

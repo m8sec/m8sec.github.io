@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- PAGE SEO -->
+        <title>Passing the OSCP</title>
+        <meta name="author" content="m8r0wn">
+        <meta name="description" content="This post outlines my experience passing the OSCP and provides some tips that helped me along the way.">
+        <meta name="keywords" content="htb,vulnhub,oscp,exploit,bugbounty,infosec,cybersecurity,redteam,pentest">
+
+        <!-- Meta tags & Resources -->
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/core.css">
+        <script type="text/javascript" src="/config.js"></script>
+
+        <!-- External JS Resources -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+        <!--Google Analytics-->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', Config.gtag, 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <navbar></navbar>
+        <banner id="banner"></banner>
+        <div id="wrapper" class="center">
+            <div class="content">
+                <h1>Passing the OSCP: 7 Tips for Success</h1>
+                <span class="post_date">July 1, 2020</span>
+                <hr>
+
+                <div style="padding-bottom:3%;">
+                Whether you're about to embark on the OSCP journey, already started the PWK course, or waiting those nervous days before the exam, you’ve come to the right place. This post outlines my experiences passing the OSCP and aims to provide some tips that helped me along the way!
+                </div>
+
+                <h3>Background</h3>
+                <div style="padding-bottom:3%;">
+                    I have been a full time penetration tester for several years now, performing a variety of assessments against customer environments. I knew going into the OSCP web applications were not my strong suit (in comparison). Therefore, I decided to take the first few months of 2020 and complete eLearnSecurity’s <a href="https://www.elearnsecurity.com/certification/ewpt/">eWPT certification</a>. Feeling a bit more prepared, and with the confidence of a new cert under my belt, I was ready to tackle the OSCP!
+                </div>
+
+                <h3>PWK Course / Labs</h3>
+
+                <h4>1) Don't Forget About the PDF Guide & Course Videos</h4>
+                <div style="padding-left:3%;">
+                After receiving my PWK materials and lab access, I took the first few weeks to comb through the PDF guide. I started each night with one or two sections from the PDF then finish with some time in the lab. I purchased 90 days of lab access knowing there would be some obstacles in my personal life, preventing me from getting in as much time as I wanted with one of the lower options.
+                <br><br>
+                Although I did not submit a lab report, I did work through the exercises and documented my answers to each section. This ended up being very useful and was referenced several times while working on some of the lab machines.
+                </div>
+
+                <br><h4>2) Root as Many Lab Systems as You Can</h4>
+                <div style="padding-left:3%;">
+                It's no surprise the exam machines will somewhat resemble the techniques learned in the lab. It's in your best interest to get as much exposure as possible. If there's something you struggle with [i.e web apps, priv esc, etc] try to choose machines that highlight those techniques and PRACTICE! In total, I root'ed 21 systems and got access to all additional network segments. Many people set goals, such as: 20-30-40-50 systems. If you have the time and dedication, that is an excellent way to stay motivated a get the most out of the course!
+                <br><br>
+                Don't forget to save and document your actions, even if not submitting a lab report. You never know when you'll have to recall a technique or payload.
+                </div>
+
+                <br><h4>3) Don't Be Afraid to Ask for Help</h4>
+                <div style="padding-left:3%;">
+                Don't be afraid to ask for help in the Offensive Security forums or community resources. If someone helps you, pay it forward. Everyone is there for the same reason, to learn and get better!
+                <br><br>
+                This was a lesson I wish someone had told me early on. In my experience, everyone was very friendly and more than willing to help. Just be respectful of peoples' time and don't expect all the answers. When asking for help, detail some steps you have already taken and specific questions where people can provide a nudge.
+                </div>
+
+                <br><h4>4) Set Your Exam Date Early & Choose a Time That's Right for You</h4>
+                <div style="padding-left:3%;padding-bottom:3%;">
+                With about 30 days of lab access left, I scheduled my exam. I opted to take it a week after my lab ended to ensure everything I learned was still fresh. During that week, I read multiple reviews and blog posts, studied the PDF guide, and watched the provided video trainings. Another small task that helped immensely, was collecting additional tools and resources for potential situations I could encounter and organizing my browser bookmarks to streamline the research process during the exam.
+                <br><br>
+                Knowing I'm a morning person, I was sure to schedule a morning start time - factoring in potential meals, naps, and other breaks throughout the day. I ended up taking shorter breaks than expected, only getting 1 hour of sleep in 24 hours, but having an idea of this going into it helped me stay relatively calm.
+                </div>
+
+                <h3>The Exam</h3>
+                <h4>5) Go in With a Plan</h4>
+                <div style="padding-left:3%;">
+                From the second I got my exam connection packet, I was prepared. The buffer overflow system was my first target, which was exploited while running <a href="https://github.com/Tib3rius/AutoRecon">Tib3rius's AutoRecon</a> in the background on the remaining scope. The exploit development section took me about 2 hours using a template I had created on the last day of my lab access. I found my prep-work allowed me to hit the ground running and not waste any time, which may have been needed on the back end.
+                </div>
+
+                <br><h4>6) Be Smart, Do Math</h4>
+                <div style="padding-left:3%;">
+                Before the exam, I read so many unfortunate posts about smart people falling just short of the required 70 points to pass. Not wanting to end up in the same position, I tried to exploit the exam systems in a way that would give me the most amount of points possible. It felt like I had a calculator running in my head at all times, playing out different scenarios to help determine which system to target next. Starting with the higher point systems, and only moving to the lower pointers where it made sense.
+                </div>
+
+                <br><h4>7) Stuck? Come Back to It</h4>
+                <div style="padding-left:3%;padding-bottom:3%;">
+                If you're anything like me, this piece of advice is easier said than done. I wanted to systematically run through each host, in the order I mapped out, knocking them out until I passed. This sounds great in theory but not always possible. Several times I found myself stuck, spending far too much time on one machine. Instead of looking at the clock and having a mini panic attack, I went to the next system in line. Only after I was done or at an acceptable number of points, did I come back and try again.
+                </div>
+
+                <h3>TL;DR</h3>
+                There is a reason the OSCP is considered a standard for most jobs in the offensive security space. Although difficult, it is achievable. Just breathe, keep learning, and don't give up - or as they say "Try harder"!
+                <ul>
+                    <h4>Helpful Resources</h4>
+                    <li style="margin-left:2%;list-style-type:disc;">References:</li>
+                        <ul>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/rewardone/OSCPRepo">
+                                    https://github.com/rewardone/OSCPRepo
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/0x4D31/awesome-oscp">
+                                    https://github.com/0x4D31/awesome-oscp
+                                </a>
+                            </li>
+                        </ul>
+                    <li style="margin-left:2%;list-style-type:disc;">Enumeration:</li>
+                        <ul>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/Tib3rius/AutoRecon">
+                                    https://github.com/Tib3rius/AutoRecon
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/m8r0wn/nullinux">
+                                    https://github.com/m8r0wn/nullinux
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/maurosoria/dirsearch">
+                                    https://github.com/maurosoria/dirsearch
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/m8r0wn/ActiveReign">
+                                    https://github.com/m8r0wn/ActiveReign
+                                </a>
+                            </li>
+                        </ul>
+                    <li style="margin-left:2%;list-style-type:disc;">Payloads:</li>
+                        <ul>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://gist.github.com/m8r0wn/eff67a82efebcb22e08de1beb8c5d88d">
+                                    https://gist.github.com/m8r0wn/oscp_payload_generator
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/">
+                                    https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="http://www.securityidiots.com/Web-Pentest/SQL-Injection/bypass-login-using-sql-injection.html">
+                                    http://www.securityidiots.com/Web-Pentest/SQL-Injection/bypass-login-using-sql-injection.html
+                                </a>
+                            </li>
+                        </ul>
+                    <li style="margin-left:2%;list-style-type:disc;">Privilege Escalation:</li>
+                        <ul>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite">
+                                    https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/rebootuser/LinEnum">
+                                    https://github.com/rebootuser/LinEnum
+                                </a>
+                            </li>
+                            <li style="margin-left:4%;list-style-type:circle;">
+                                <a href="https://github.com/m0nad/awesome-privilege-escalation">
+                                    https://github.com/m0nad/awesome-privilege-escalation
+                                </a>
+                            </li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+        <footer></footer>
+       <script type="text/javascript" src="/js/core.js"></script>
+    </body>
+</html>
