@@ -2,50 +2,41 @@
 <rss version="2.0">
 <channel>
 
-  <title>m8r0wn</title>
-  <link>https://m8r0wn.com/</link>
+  <title>m8sec</title>
+  <link>https://m8sec.dev/</link>
   <description>Offensive Security</description>
   <ttl>60</ttl>
   <image>
-	<url>https://m8r0wn.com/img/profile_pic.jpg</url>
-	<title>m8r0wn.com</title>
-	<link>https://m8r0wn.com/</link>
+	<url>https://m8sec.dev/img/profile_pic.jpg</url>
+	<title>m8sec.dev</title>
+	<link>https://m8sec.dev/</link>
 	<width>32</width>
 	<height>32</height>
   </image>
 
   <item>
     <title>Guide to Bypassing MFA in 2020</title>
-    <link>https://m8r0wn.com/blog/bypassing-mfa-in-2020/</link>
+    <link>https://m8sec.dev/blog/bypassing-mfa-in-2020/</link>
     <pubDate>December 16, 2020</pubDate>
-    <image>https://m8r0wn.com/blog/bypassing-mfa-in-2020/thumb.jpg</image>
+    <image>https://m8sec.dev/blog/bypassing-mfa-in-2020/thumb.jpg</image>
     <description></description>
     <category>Bypass</category>
   </item>
 
   <item>
-    <title>Passing the OSCP: 7 Tips for Success</title>
-    <link>https://m8r0wn.com/blog/passing-the-oscp/</link>
-    <pubDate>July 1, 2020</pubDate>
-    <image>https://m8r0wn.com/blog/passing-the-oscp/thumb.png</image>
-    <description></description>
-    <category>OSCP</category>
-  </item>
-
-  <item>
     <title>Information Disclosure in NTLM Authentication</title>
-    <link>https://m8r0wn.com/blog/ntlm-info/</link>
+    <link>https://m8sec.dev/blog/ntlm-info/</link>
     <pubDate>March 05, 2020</pubDate>
-    <image>https://m8r0wn.com/blog/ntlm-info/thumb.png</image>
+    <image>https://m8sec.dev/blog/ntlm-info/thumb.png</image>
     <description></description>
     <category>BugBounty</category>
   </item>
 
   <item>
     <title>Uncovering Multiple XSS Conditions in Cacti &#60;=1.1.38</title>
-    <link>https://m8r0wn.com/blog/cacti-stored-xss/</link>
+    <link>https://m8sec.dev/blog/cacti-stored-xss/</link>
     <pubDate>September 02, 2018</pubDate>
-    <image>https://m8r0wn.com/blog/cacti-stored-xss/thumb.png</image>
+    <image>https://m8sec.dev/blog/cacti-stored-xss/thumb.png</image>
     <description></description>
     <category>XSS</category>
   </item>

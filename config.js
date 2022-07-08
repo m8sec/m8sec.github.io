@@ -1,6 +1,6 @@
 const Config = {
   // Site name, username, or handle for navbar
-  name          : 'm8r0wn',
+  name          : 'm8sec',
 
   // Google analytics ID
   gtag          : 'UA-156040085-1',
@@ -15,7 +15,7 @@ const Config = {
   date_color    : '#333333',          // In post date & list date color
 
   // Background colors
-  banner_img    : '/img/banner.jpg',  // Optional img bg banner
+  banner_img    : '/img/twitter_bg.jpg',  // Optional img bg banner
   bg_color      : '#151515',          // Main page bg color
   fg_color      : '#F0F0F0',          // Inner content bg color
   nav_color     : '#000000',          // Nav bar color
@@ -36,13 +36,13 @@ const Config = {
 
 const Socials = {
   // Social Media Links in Footer - displayed in list order
-  github        : 'https://github.com/m8r0wn',
-  twitter       : 'https://twitter.com/m8r0wn',
+  github        : 'https://github.com/m8sec',
+  twitter       : 'https://twitter.com/m8sec',
   facebook      : '',
   linkedin      : '',
   youtube       : 'https://www.youtube.com/channel/UC6-HLpd0rpPXmpJIhED8qTw',
   pinterest     : '',
-  medium        : 'https://m8r0wn.medium.com',
+  medium        : 'https://m8sec.medium.com',
   instagram     : '',
   snapchat      : '',
   reddit        : '',
