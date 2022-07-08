@@ -15,7 +15,7 @@ const Config = {
   date_color    : '#333333',          // In post date & list date color
 
   // Background colors
-  banner_img    : '/img/twitter_bg.jpg',  // Optional img bg banner
+  banner_img    : '/img/banner.jpg',  // Optional img bg banner
   bg_color      : '#151515',          // Main page bg color
   fg_color      : '#F0F0F0',          // Inner content bg color
   nav_color     : '#000000',          // Nav bar color
