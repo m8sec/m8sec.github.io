@@ -1,7 +1,7 @@
 ---
 title: Guide to Bypassing MFA in 2020
 layout: "post"
-categories: "Bypass"
+categories: "Cloud"
 tags: ["Bypass"]
 ---
 

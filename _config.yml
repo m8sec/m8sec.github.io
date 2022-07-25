@@ -15,11 +15,13 @@ tagline: " "           # it will display as the sub-title
 description: >-     # used by seo meta and the atom feed
   Cybersecurity blog used to share the latest tools, techniques, and research in offensive security.
 
-analytics:
-  provider: "google" # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id: "UA-156040085-1"
-    anonymize_ip: true
+
+google_analytics:
+  id: 'UA-156040085-1'        # fill in your Google Analytics ID
+  # Google Analytics pageviews report settings
+  pv:
+    proxy_endpoint:           # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path:               # the local PV cache data, friendly to visitors from GFW region
 
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
@@ -187,8 +189,8 @@ exclude:
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
-    #category: category
+    category: category
     tag: tag
   permalinks:
     tag: /tags/:name/
-    #category: /categories/:name/
+    category: /categories/:name/
