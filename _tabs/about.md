@@ -11,7 +11,7 @@ This site is used as a place to post random research, write-ups, and whatever el
 
 ## Acronyms
 
-`MSIS, CISSP, OSCP, CRTO, EWPT, CEH`
+`MSIS, CISSP, OSWP, OSCP, CRTO, EWPT, CEH`
 
 
 ## Notable Experience
