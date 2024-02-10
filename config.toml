@@ -1,0 +1,129 @@
+baseurl         = "https://m8sec.dev"
+title           = "m8sec"
+languageCode    = "en-us"
+theme           = "hello-friend-ng"
+googleAnalytics = "G-9W76TCC3CF"
+
+paginate      = 10
+enableEmoji   = true
+enableGitInfo = false
+
+PygmentsCodeFences = true
+PygmentsStyle      = "native"
+
+enableRobotsTXT = true
+disableSitemap  = false
+disableRSS      = false
+rssLimit        = 20
+copyright       = "m8sec &copy; 2024"
+
+
+[author]
+  name = "m8sec"
+
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  #homeSubtitle = ""
+
+  disableReadOtherPosts = false
+  enableSharingButtons = true
+
+  # Metadata
+  description = "Private site used to share tools, techniques, and research"
+  keywords = "m8sec, osin, red team, penetration test, technology, cyber, infosec, recon"
+
+  images = [""]
+  contentTypeName = "blogs"
+  enableThemeToggle = true
+  defaultTheme = "dark"
+
+
+  [params.logo]
+    logoText = "/dev/random"
+    logoHomeLink = "/"
+
+  [params.portrait]
+    path = "/images/profile/m8sec.png"
+
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/m8sec"
+
+  [[params.social]]
+      name = "email"
+      url  = "mailto:info@m8sec.dev"
+
+  [[params.social]]
+      name = "linkedin"
+      url  = "https://www.linkedin.com/in/m8sec/"
+
+  [[params.social]]
+    name = "youtube"
+    url = "https://youtube.com/@m8sec"
+
+  [[params.social]]
+      name = "github"
+      url  = "https://github.com/m8sec"
+
+
+  [params.footer]
+      trademark = false
+      rss = false
+      copyright = true
+      author = false
+      topText = ['<a href="/blog/feed.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>']
+      bottomText = []
+
+
+[permalinks]
+  posts = "/blog/:title/"
+
+
+[taxonomies]
+    tag      = "tags"
+
+
+[menu]
+[[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/tags/Posts/"
+    weight     = 1
+
+[[menu.main]]
+    identifier = "videos"
+    name       = "Videos"
+    url        = "/tags/Videos/"
+    weight     = 2
+
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about/"
+    weight     = 3
+
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = "application/rss"
+    baseName = "feed"
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = false
+  [privacy.youtube]
+    disable = false

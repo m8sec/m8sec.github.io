@@ -1,0 +1,441 @@
+<!--
+    Online Search Tools
+    m8sec.dev/tools
+    @m8sec
+-->
+
+<style>
+    * {box-sizing: border-box}
+
+    .searchNav {
+        float: none;
+        display: inline;
+        border:0;
+        background-color: #f1f1f1;
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    .searchNav button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 15px 15px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .searchNav button:hover {
+        background-color: #ddd;
+    }
+
+    .searchNav button.active {
+        background-color: #ccc;
+    }
+
+    .Content {
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 0px 25px;
+        border: 1px solid #ccc;
+        height: auto;
+        overflow-y:auto;
+    }
+
+    .Content input, select {
+        margin: 0 0 7px 0;
+    }
+
+    .searchbutton {
+        padding-left:3px;
+        width:120px;
+    }
+
+    h3 {
+        padding-top:25px;
+    }
+</style>
+<div class="searchNav">
+    <button onclick="location.href='#domain';">Domain</button>
+    <button onclick="location.href='#subdomain';">Subdomains</button>
+    <button onclick="location.href='#employees';">Linkedin Employees</button>
+    <button onclick="location.href='#info';">Information Disclosure</button>
+    <button onclick="location.href='#vulns';">Vulnerabilities</button>
+</div>
+
+<div class="Content">
+    <!-- ---- Domain Search Tools ---- -->
+    <h3><a id="domain"></a>Domain Search</h3>
+
+    <form onsubmit="searchDomain_dns(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="dns lookup" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_dns(domain) {
+            window.open('https://viewdns.info/dnsrecord/?domain=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_whois(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="whois" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_whois(domain) {
+            window.open('https://viewdns.info/whois/?domain=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_whoiscom(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="whois.com" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_whoiscom(domain) {
+            window.open('https://www.whois.com/whois/' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_revwhois(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="reverse whois" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_revwhois(domain) {
+            window.open('https://viewdns.info/reversewhois/?q=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_history(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="ip history" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_history(domain) {
+            window.open('https://viewdns.info/iphistory/?domain=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_httpheaders(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="http headers" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_httpheaders(domain) {
+            window.open('https://viewdns.info/httpheaders/?domain=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_portscan(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="port scan" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_portscan(domain) {
+            window.open('https://viewdns.info/portscan/?host=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchDomain_arin(this.company.value);">
+        <input type="text" name="company" size="20" placeholder="Company Name" required />
+        <input type="submit" class="searchbutton" Value="arin.net" />
+    </form>
+    <script type="text/javascript">
+        function searchDomain_arin(company) {
+            window.open('https://search.arin.net/rdap/?query=' + company);
+        }
+    </script>
+
+
+    <!-- ---- Subdomain Enumeration Search Tools ---- -->
+    <h3><a id="subdomain"></a>Subdomain Enumeration</h3>
+
+    <form onsubmit="searchSubs_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchSubs_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchSubs_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_01(domain) {
+            window.open('https://www.google.com/search?q=site:' + domain + ' inurl:.' + domain);
+        }
+        function searchSubs_02(domain) {
+            window.open('http://www.bing.com/search?q=site:' + domain + ' inurl:.' + domain);
+        }
+        function searchSubs_03(domain) {
+            window.open('https://duckduckgo.com/?q=site:' + domain + ' inurl:.' + domain);
+        }
+    </script>
+
+    <br><br>
+
+    <form onsubmit="searchSubs_certsh(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="crt.sh" />
+    </form>
+    <script type="text/javascript">
+        //https://crt.sh/?q=%%25.%s&output=json
+        function searchSubs_certsh(domain) {window.open('https://crt.sh/?q=' + domain);}
+    </script>
+
+    <form onsubmit="searchSubs_otx(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="dnsdumpster" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_otx(domain) {
+            window.open('https://api.hackertarget.com/hostsearch/?q=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchSubs_archive(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="archive.org" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_archive(domain) {
+            window.open('http://web.archive.org/cdx/search/cdx?url=*.' + domain + '/*&output=json&collapse=urlkey');
+        }
+    </script>
+
+    <form onsubmit="searchSubs_dnsdump(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="otx alienvault" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_dnsdump(domain) {
+            window.open('https://otx.alienvault.com/api/v1/indicators/domain/' + domain + '/passive_dns');
+        }
+    </script>
+
+    <form onsubmit="searchSubs_censys(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="censys.io" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_censys(domain) {
+            window.open('https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchSubs_dnsrepo(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="dnsrepo" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_dnsrepo(domain) {
+            window.open('https://dnsrepo.noc.org/?search=' + domain);
+        }
+    </script>
+
+    <form onsubmit="searchSubs_reconcloud(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="recon.cloud" />
+    </form>
+    <script type="text/javascript">
+        function searchSubs_reconcloud(domain) {
+            window.open('https://recon.cloud/api/search?domain=' + domain);
+        }
+    </script>
+
+    <!-- ---- Linkedin Search Tools ---- -->
+    <h3><a id="employees"></a>Linkedin Employee Search</h3>
+
+    <form onsubmit="searchLinkedin_01(this.company.value);">
+        <input type="text" name="company" size="20" placeholder="Company Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchLinkedin_02(this.company.value);">
+        <input type="text" name="company" size="20" placeholder="Company Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchLinkedin_03(this.company.value);">
+        <input type="text" name="company" size="20" placeholder="Company Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchLinkedin_01(company) {
+            window.open('https://www.google.com/search?q=site:linkedin.com/in+'+company);
+        }
+        function searchLinkedin_02(company) {
+            window.open('https://www.bing.com/search?q=site:linkedin.com/in+' + company);
+        }
+        function searchLinkedin_03(company) {
+            window.open('https://duckduckgo.com/?q=site:linkedin.com/in+' + company);
+        }
+    </script>
+
+
+    <!-- ---- Information Disclosure Search Tools ---- -->
+    <h3><a id="info"></a>Internal Documents</h3>
+
+    <form onsubmit="searchInternalInfo_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchInternalInfo_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchInternalInfo_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchInternalInfo_01(domain) {
+            window.open('https://www.google.com/search?q=site:' + domain + ' "not for distribution" | classified | username | password | confidential | "employee only" | proprietary | classified | "trade secret" | internal | private filetype:log OR filetype:txt OR filetype:pdf OR filetype:doc OR filetype:docx OR filetype:xls OR filetype:xlsx OR filetype:csv OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+        function searchInternalInfo_02(domain) {
+            window.open('https://www.bing.com/search?q=site:' + domain + ' "not for distribution" | classified | username | password | confidential | "employee only" | proprietary | classified | "trade secret" | internal | private filetype:log OR filetype:txt OR filetype:pdf OR filetype:doc OR filetype:docx OR filetype:xls OR filetype:xlsx OR filetype:csv OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+        function searchInternalInfo_03(domain) {
+            window.open('https://duckduckgo.com/?q=site:' + domain + ' "not for distribution" | classified | username | password | confidential | "employee only" | proprietary | classified | "trade secret" | internal | private filetype:log OR filetype:txt OR filetype:pdf OR filetype:doc OR filetype:docx OR filetype:xls OR filetype:xlsx OR filetype:csv OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+    </script>
+
+
+    <h3 id="backup-files">Backup Files</h3>
+    <form onsubmit="searchBackupDocs_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchBackupDocs_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchBackupDocs_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchBackupDocs_01(domain) {
+            window.open('https://www.google.com/search?q=site:' + domain + ' filetype:log OR filetype:txt OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+        function searchBackupDocs_02(domain) {
+            window.open('https://www.bing.com/search?q=site:' + domain + ' filetype:log OR filetype:txt OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+        function searchBackupDocs_03(domain) {
+            window.open('https://duckduckgo.com/?q=site:' + domain + ' filetype:log OR filetype:txt OR filetype:log OR filetype:ini OR filetype:config OR filetype:conf OR filetype:save OR filetype:bak OR filetype:old');
+        }
+    </script>
+
+
+    <h3 id="directory-listings">Directory Listings</h3>
+    <form onsubmit="searchDirectories_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchDirectories_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchDirectories_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchDirectories_01(domain) {
+            window.open('https://www.google.com/search?q=intitle%3A"index+of"+|+intitle%3Aindex.of+site%3A' + domain);
+        }
+        function searchDirectories_02(domain) {
+            window.open('https://www.bing.com/search?q=intitle%3A"index+of"+site%3A' + domain);
+        }
+        function searchDirectories_03(domain) {
+            window.open('https://duckduckgo.com/?q=intitle%3A"index+of"+|+intitle%3Aindex.of+site%3A' + domain);
+        }
+    </script>
+
+
+    <!-- ---- Vulnerability Search Tools ---- -->
+    <h3><a id="vulns"></a>Open Redirect Parameters</h3>
+
+    <form onsubmit="searchRedirect_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchRedirect_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchRedirect_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchRedirect_01(domain) {
+            window.open('https://www.google.com/search?q=inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:%26 inurl:http site:'+domain);
+        }
+        function searchRedirect_02(domain) {
+            window.open('https://www.bing.com/search?q=site:' + domain+ ' inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:%26 inurl:http');
+        }
+        function searchRedirect_03(domain) {
+            window.open('https://duckduckgo.com/?q=site:' + domain+ ' inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:%26 inurl:http');
+        }
+    </script>
+
+
+    <h3 id="xss">XSS Parameters</h3>
+    <form onsubmit="searchXSS_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchXSS_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchXSS_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchXSS_01(domain) {
+            window.open('https://www.google.com/search?q=inurl:id= | inurl:s= | inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:%26 site:'+domain);
+        }
+        function searchXSS_02(domain) {
+            window.open('https://www.bing.com/search?q=site:' + domain+ ' inurl:id= | inurl:s= | inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:%26');
+        }
+        function searchXSS_03(domain) {
+            window.open('https://duckduckgo.com/?q=inurl:id= | inurl:s= | inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:%26 site:'+domain);
+        }
+    </script>
+
+
+    <h3 id="sensitive-parameters">High Value Parameters</h3>
+    <form onsubmit="searchParameters_01(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Google" />
+    </form>
+    <form onsubmit="searchParameters_02(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="Bing" />
+    </form>
+    <form onsubmit="searchParameters_03(this.domain.value);">
+        <input type="text" name="domain" size="20" placeholder="Domain Name" required />
+        <input type="submit" class="searchbutton" Value="DuckDuckGo" />
+    </form>
+    <script type="text/javascript">
+        function searchParameters_01(domain) {
+            window.open('https://www.google.com/search?q=inurl:cmd= | inurl:exe= | inurl:exec= | inurl:query= | inurl:ping= | inurl:read= | inurl:run= | inurl:code= | inurl:do= | inurl:fetch= | inurl:file= | inurl:detail= | inurl:dir= | inurl:doc= | inurl:locate= | inurl:html= | inurl:data= | inurl:domain= | inurl:path= | inurl:secret= | inurl:password= | inurl:phone= | inurl:email= | inurl:server= inurl:%26 inurl:http site:' + domain);
+        }
+        function searchParameters_02(domain) {
+            window.open('https://www.bing.com/search?q=inurl:cmd= | inurl:exe= | inurl:exec= | inurl:query= | inurl:ping= | inurl:read= | inurl:run= | inurl:code= | inurl:do= | inurl:fetch= | inurl:file= | inurl:detail= | inurl:dir= | inurl:doc= | inurl:locate= | inurl:html= | inurl:data= | inurl:domain= | inurl:path= | inurl:secret= | inurl:password= | inurl:phone= | inurl:email= | inurl:server= inurl:%26 inurl:http site:' + domain);
+        }
+        function searchParameters_03(domain) {
+            window.open('https://duckduckgo.com/?q=inurl:cmd= | inurl:exe= | inurl:exec= | inurl:query= | inurl:ping= | inurl:read= | inurl:run= | inurl:code= | inurl:do= | inurl:fetch= | inurl:file= | inurl:detail= | inurl:dir= | inurl:doc= | inurl:locate= | inurl:html= | inurl:data= | inurl:domain= | inurl:path= | inurl:secret= | inurl:password= | inurl:phone= | inurl:email= | inurl:server= inurl:%26 inurl:http site:' + domain);
+        }
+    </script>
+</div>
+
+<br><br>
