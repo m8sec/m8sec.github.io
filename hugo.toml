@@ -1,0 +1,264 @@
+baseURL = "https://m8sec.dev"
+title = "m8sec"
+languageCode = "en-us"
+theme = "hello-friend-m8"
+
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+
+paginate  = 10
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+copyright = "m8sec"
+
+googleAnalytics = "G-9W76TCC3CF"
+# disqusShortname = ""
+
+archetypeDir = "archetypes"
+contentDir   = "content"
+dataDir      = "data"
+layoutDir    = "layouts"
+publishDir   = "public"
+
+buildDrafts  = false
+buildFuture  = false
+buildExpired = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[permalinks]
+  posts = "/blog/:title/"
+
+[blackfriday]
+  hrefTargetBlank = true
+
+[taxonomies]
+  tag      = "tags"
+  category = "categories"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Metadata mostly used in document's head
+  # 
+  description = "m8sec infosec blog. Sharing tools, techniques, and research on the latest in cybersecurity and hacking. Education use only."
+  keywords = ["infosec", "privacy", "osint", "recon", "hacking", "offsec", "m8", "m8sec", "technology", "tech", "cyber", "cybersecurity", "blog"]
+  images = [""]
+
+  # Home subtitle of the index page.
+  #
+  homeSubtitle = ""
+
+  # Set a background for the homepage
+  # backgroundImage = "assets/images/background.jpg"
+
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  #
+  # gitUrl = ""
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  #
+  disableReadOtherPosts = false
+
+  # Enable theme toggle
+  # 
+  # This options enables the theme toggle for the theme. 
+  # Per default, this option is off. 
+  # The theme is respecting the prefers-color-scheme of the operating system. 
+  # With this option on, the page user is able to set the scheme he wants. 
+  #
+  enableThemeToggle = true
+  defaultTheme = "light"
+
+  # Sharing buttons
+  #
+  # There are a lot of buttons preconfigured. If you want to change them,
+  # generate the buttons here: https://sharingbuttons.io
+  # and add them into your own `layouts/partials/sharing-buttons.html`
+  #
+  enableSharingButtons = true
+
+  # Global language menu
+  #
+  # Enables the global language menu.
+  #
+  enableGlobalLanguageMenu = false
+
+  # Integrate Javascript files or stylesheets by adding the url to the external assets or by
+  # linking local files with their path relative to the static folder, e.g. "css/styles.css"
+  #
+  customCSS = []
+  customJS  = []
+
+  # Toggle this option need to rebuild SCSS, requires extended version of Hugo
+  #
+  justifyContent = false  # Set "text-align: justify" to .post-content.
+
+  # Integrate Plausible.io
+  # plausibleDataDomain = 'test.com'
+  # plausibleScriptSource = 'https://plausible.io/js/script.js'
+
+  [params.author]
+    name = "m8sec"
+
+  # Custom footer 
+  # If you want, you can easily override the default footer with your own content. 
+  #
+  [params.footer]
+    trademark = "2024"
+    rss = true
+    copyright = "m8sec"
+    author = false
+    topText = []
+    bottomText = []
+
+  # Colors for favicons
+  #
+  [params.favicon.color]
+    mask = "#1b1c1d"
+    msapplication = "#1b1c1d"
+    theme = "#1b1c1d"
+
+  [params.logo]
+    logoMark     = ">"
+    logoText     = "$ cd /dev/random"
+    logoHomeLink = "/"
+    # Set true to remove the logo cursor entirely.
+    # logoCursorDisabled = false
+    # Set to a valid CSS color to change the cursor in the logo.
+    logoCursorColor    = "#25588a"
+    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
+    logoCursorAnimate  = "2s"
+    # Append the current url pathname to logoText 
+    # logoCursorPathname = true
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+  # Addon: Startpage portrait 
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+  # Uncomment this if you want a portrait on your start page
+  #
+  [params.portrait]
+     path     = "/images/profile/m8sec.png"
+     # maxWidth = "150px"
+     # alt      = "m8sec"
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+  # Addon: Commento
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+  # Commento is more than just a comments widget you can embed — 
+  # it’s a return to the roots of the internet. 
+  # An internet without the tracking and invasions of privacy. 
+  # An internet that is simple and lightweight. 
+  # An internet that is focused on interesting discussions, not ads. 
+  # A better internet.
+  # Uncomment this to enable Commento.
+  #
+  # [params.commento]
+  #   url = ""
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+  # Addon: Utteranc.es
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+  # Utteranc.es is a lightweight comments widget built on GitHub issues.
+  # See https://utteranc.es/ for documentation
+  # Uncomment this to enable Utteranc.es.
+  #
+  # [params.utterances]
+  #   Your GitHub repository
+  #
+  #   repository = ""
+  #
+  #   label used for GitHub issues
+  #
+  #   label      = ""
+  # 
+  #   Blog Post <-> Issue mapping. This parameter is optional. Possible values are:
+  #      - pathname
+  #      - url
+  #      - title
+  #      - og:title
+  #      - issue number
+  #      - specific term
+  #
+  #   issueTerm  = ""
+  #
+  #   Theme used: possible values are:
+  #      - github-light
+  #      - github-dark
+  #      - preferred-color-scheme
+  #      - github-dark-orange
+  #      - icy-dark
+  #      - dark-blue
+  #      - photon-dark
+  #      - boxy-light
+  #      - gruvbox-dark
+  #
+  #   theme      = ""
+  # 
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+  # Addon: Social icons
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+  #
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/m8sec"
+
+  [[params.social]]
+      name = "email"
+      url  = "mailto:info@m8sec.dev"
+
+  [[params.social]]
+      name = "linkedin"
+      url  = "https://www.linkedin.com/in/m8sec/"
+
+  [[params.social]]
+    name = "youtube"
+    url = "https://youtube.com/@m8sec"
+
+  [[params.social]]
+      name = "github"
+      url  = "https://github.com/m8sec"
+
+[languages]
+  [languages.en]
+    weight = 1
+    readOtherPosts = false
+    sharingButtons = "Share Post"
+
+[menu]
+  [[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/blog/"
+    weight     = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "/about/"
+    weight     = 2
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = false
+  [privacy.youtube]
+    disable = false

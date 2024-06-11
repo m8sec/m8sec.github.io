@@ -1,0 +1,9 @@
+User-agent: ia_archiver-web.archive.org
+User-agent: ia_archiver
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: *
+Disallow: /
+Allow: /$
+Allow: /posts/
