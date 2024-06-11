@@ -78,7 +78,7 @@ disableHugoGeneratorInject = false
   # With this option on, the page user is able to set the scheme he wants. 
   #
   enableThemeToggle = true
-  defaultTheme = "light"
+  defaultTheme = "dark"
 
   # Sharing buttons
   #
