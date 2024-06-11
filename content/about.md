@@ -17,7 +17,7 @@ description: ""
 
 I'm a *creator*, *educator*, and perpetual *student*. Professionally, I work as a Principal Red Team Operator, leading highly technical teams and specializing in real-word adversary simulation.
 
-In my spare time, I enjoy reading about the latest offensive security tactics and researching new techniques. I use coding as a way to dissect and learn these techniques, often evolving into new tooling to uncover vulnerabilities in complex environments. These efforts can be seen on my [GitHub](https://github.com/m8sec) or discussed in my latest blog [post](/posts/). 
+In my spare time, I enjoy reading about the latest offensive security tactics and researching new techniques. I use coding as a way to dissect and learn these techniques, often evolving into new tooling to uncover vulnerabilities in complex environments. These efforts can be seen on my [GitHub](https://github.com/m8sec) or discussed in my latest [blog](/blog/). 
 
 
 ## Experience
